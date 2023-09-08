@@ -4,21 +4,21 @@ package proyectotrasversal.entidades;
 
 public class Inscripcion {
     private int idDescripcion;
-    private alumno alumno;
+    private Alumno alumno;
     private Materia materia;
     private double nota;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idDescripcion, alumno alumno, Materia materia, double nota) {
+    public Inscripcion(int idDescripcion, Alumno alumno, Materia materia, double nota) {
         this.idDescripcion = idDescripcion;
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
     }
 
-    public Inscripcion(alumno alumno, Materia materia, double nota) {
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
@@ -36,11 +36,11 @@ public class Inscripcion {
         this.idDescripcion = idDescripcion;
     }
 
-    public alumno getAlumno() {
+    public Alumno getAlumno() {
         return alumno;
     }
 
-    public void setAlumno(alumno alumno) {
+    public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
 

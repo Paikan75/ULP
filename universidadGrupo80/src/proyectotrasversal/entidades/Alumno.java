@@ -4,17 +4,17 @@ package proyectotrasversal.entidades;
 import java.time.LocalDate;
 
 
-public class alumno {
+public class Alumno {
     private int idAlumno;
     private String apellido;
     private String nombre;
     private LocalDate fechaNac;
     private boolean activo;
 
-    public alumno() {
+    public Alumno() {
     }
 
-    public alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+    public Alumno(int idAlumno, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
         this.idAlumno = idAlumno;
         this.apellido = apellido;
         this.nombre = nombre;
@@ -22,7 +22,7 @@ public class alumno {
         this.activo = activo;
     }
 
-    public alumno(String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+    public Alumno(String apellido, String nombre, LocalDate fechaNac, boolean activo) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNac = fechaNac;
