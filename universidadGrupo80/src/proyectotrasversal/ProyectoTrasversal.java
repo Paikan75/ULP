@@ -13,6 +13,7 @@ public class ProyectoTrasversal {
     public static void main(String[] args) {
         // TODO code application logic here
         Connection conex = Conexion.getConnection();
+        Alumno juan = 
     }
     
 }
