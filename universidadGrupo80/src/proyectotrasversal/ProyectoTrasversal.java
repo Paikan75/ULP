@@ -1,6 +1,9 @@
 
 package proyectotrasversal;
 
+import java.sql.Connection;
+import proyectotrasversal.accesoADatos.Conexion;
+
 
 public class ProyectoTrasversal {
 
@@ -9,6 +12,7 @@ public class ProyectoTrasversal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Connection conex = Conexion.getConnection();
     }
     
 }
