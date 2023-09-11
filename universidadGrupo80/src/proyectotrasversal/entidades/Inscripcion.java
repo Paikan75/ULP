@@ -3,7 +3,7 @@ package proyectotrasversal.entidades;
 
 
 public class Inscripcion {
-    private int idDescripcion;
+    private int idInscripcion;
     private Alumno alumno;
     private Materia materia;
     private double nota;
@@ -11,8 +11,8 @@ public class Inscripcion {
     public Inscripcion() {
     }
 
-    public Inscripcion(int idDescripcion, Alumno alumno, Materia materia, double nota) {
-        this.idDescripcion = idDescripcion;
+    public Inscripcion(int idInscripcion, Alumno alumno, Materia materia, double nota) {
+        this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
@@ -24,16 +24,12 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public Inscripcion(double nota) {
-        this.nota = nota;
+    public int getIdInscripcion() {
+        return idInscripcion;
     }
 
-    public int getIdDescripcion() {
-        return idDescripcion;
-    }
-
-    public void setIdDescripcion(int idDescripcion) {
-        this.idDescripcion = idDescripcion;
+    public void setIdInscripcion(int idInscripcion) {
+        this.idInscripcion = idInscripcion;
     }
 
     public Alumno getAlumno() {
@@ -59,6 +55,10 @@ public class Inscripcion {
     public void setNota(double nota) {
         this.nota = nota;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "idInscripcion=" + idInscripcion + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
+    }
+       
 }
