@@ -1,5 +1,5 @@
 
-package proyectotrasversal.entidades;
+package proyectotrasversal.Entidades;
 
 
 public class Inscripcion {

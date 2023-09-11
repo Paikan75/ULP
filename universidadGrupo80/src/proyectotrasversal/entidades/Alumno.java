@@ -1,5 +1,5 @@
 
-package proyectotrasversal.entidades;
+package proyectotrasversal.Entidades;
 
 import java.time.LocalDate;
 
