@@ -28,7 +28,7 @@ public class ProyectoTrasversal {
         
         //alu.eliminarAlumno(1);
         
-        Alumno alumnoEncontrado=alu.buscarAlumno(36);
+        Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12456876);
         
         if(alumnoEncontrado!=null){
         System.out.println(alumnoEncontrado.toString());

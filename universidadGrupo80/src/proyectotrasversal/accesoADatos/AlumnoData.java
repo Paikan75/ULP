@@ -138,4 +138,36 @@ public class AlumnoData {
          
      }
      
+     public Alumno buscarAlumnoPorDni(int dni)
+     {
+         String sql= "SELECT * FROM alumno WHERE dni = ? and estado = 1";
+         Alumno alumno=null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,dni);
+            ResultSet rs= ps.executeQuery();
+            
+            if (rs.next()){
+                
+                alumno=new Alumno();
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setDni(rs.getInt("dni"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setActivo(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "El alumno no existe o esta exterminado");
+            }
+            
+             ps.close();
+             
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno.");
+        }
+        
+        return alumno;
+         
+     }
+     
 }
