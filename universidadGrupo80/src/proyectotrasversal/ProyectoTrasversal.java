@@ -27,6 +27,7 @@ public class ProyectoTrasversal {
         //alu.modificarAlumno(juan);
         
         alu.eliminarAlumno(1);
+        
     }
     
 }
