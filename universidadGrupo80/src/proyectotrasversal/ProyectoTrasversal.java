@@ -20,19 +20,29 @@ public class ProyectoTrasversal {
         
         //Alumno juan = new Alumno(12456876,"Flores","Roberto",LocalDate.of(2012, Month.MARCH, 15),true);
         
+        //Alumno gomez = new Alumno(420,"Gomez","Roberto",LocalDate.of(2012, Month.MARCH, 15),true);
+        //Alumno flores = new Alumno(212,"Flores","Roberto",LocalDate.of(2012, Month.MARCH, 15),true);
+        //Alumno perez = new Alumno(999,"Perez","Laura",LocalDate.of(2012, Month.MARCH, 15),true);
+        
         AlumnoData alu = new AlumnoData();
         
-        //alu.guardarAlumno(juan);
+        for(Alumno alumno:alu.listarAlumno()){
+            System.out.println(alumno);
+        }
+        
+        //alu.guardarAlumno(gomez);
+        //alu.guardarAlumno(flores);
+        //alu.guardarAlumno(perez);
         
         //alu.modificarAlumno(juan);
         
         //alu.eliminarAlumno(1);
         
-        Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12456876);
+        //Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12456876);
         
-        if(alumnoEncontrado!=null){
-        System.out.println(alumnoEncontrado.toString());
+        //if(alumnoEncontrado!=null){
+        //System.out.println(alumnoEncontrado.toString());
         
-    }
+    //}
     }
 }
