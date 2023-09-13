@@ -95,10 +95,11 @@ public class InscripcionData {
         
     }
   
-    public List<Inscripcion> listarInscripciones()
-     {
-         String sql= "SELECT * FROM inscripcion ";
+    public List<Inscripcion> listarInscripciones(){
+         
          ArrayList<Inscripcion> inscripciones= new ArrayList<>();
+         
+         String sql= "SELECT * FROM inscripcion ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -107,8 +108,8 @@ public class InscripcionData {
             while (rs.next()){
                 
                 Inscripcion inscripcion = new Inscripcion();
-                inscripcion.setIdInscripcion("idInscripcion");
-                inscripcion.setMateria("idMateria");
+                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+                inscripcion.setMateria(rs.get);
                 inscripcion.setDni(rs.getInt("dni"));
                 inscripcion.setDni(rs.getInt("dni"));
                
@@ -119,7 +120,7 @@ public class InscripcionData {
              ps.close();
              
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno.");
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion.");
         }
         
         return alumnos;
