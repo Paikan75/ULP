@@ -1,5 +1,5 @@
 
-package proyectotrasversal.accesoADatos;
+package proyectotransversal.accesoADatos;
 
 import java.sql.*;
 import java.util.logging.Level;

@@ -1,5 +1,5 @@
 
-package proyectotrasversal.accesoADatos;
+package proyectotransversal.accesoADatos;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import proyectotrasversal.Entidades.Alumno;
+import proyectotransversal.Entidades.Alumno;
 
 
 public class AlumnoData {

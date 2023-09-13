@@ -1,10 +1,10 @@
-package proyectotrasversal.accesoADatos;
+package proyectotransversal.accesoADatos;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import proyectotrasversal.Entidades.Materia;
+import proyectotransversal.Entidades.Materia;
 
 public class MateriaData {
 

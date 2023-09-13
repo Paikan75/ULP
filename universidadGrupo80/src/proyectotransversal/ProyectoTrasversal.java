@@ -1,12 +1,12 @@
 
-package proyectotrasversal;
+package proyectotransversal;
 
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.Month;
-import proyectotrasversal.Entidades.Alumno;
-import proyectotrasversal.accesoADatos.AlumnoData;
-import proyectotrasversal.accesoADatos.Conexion;
+import proyectotransversal.Entidades.Alumno;
+import proyectotransversal.accesoADatos.AlumnoData;
+import proyectotransversal.accesoADatos.Conexion;
 
 
 public class ProyectoTrasversal {
