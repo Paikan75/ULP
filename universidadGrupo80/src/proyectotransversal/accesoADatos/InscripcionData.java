@@ -107,14 +107,12 @@ public class InscripcionData {
             
             while (rs.next()){
                 
-                Inscripcion inscripcion = new Inscripcion();
-                inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
-                inscripcion.setMateria(rs.get);
-                inscripcion.setDni(rs.getInt("dni"));
-                inscripcion.setDni(rs.getInt("dni"));
+                Inscripcion insc = new Inscripcion();
+                insc.setIdInscripcion(rs.getInt("idInscripcion"));
+                
                
                 
-                inscripcion.add(inscripcion);
+                inscripciones.add(insc);
             }
             
              ps.close();
@@ -123,7 +121,7 @@ public class InscripcionData {
            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripcion.");
         }
         
-        return alumnos;
+        return inscripciones;
          
      }
 }
