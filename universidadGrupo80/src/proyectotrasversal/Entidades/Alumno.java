@@ -3,7 +3,7 @@ package proyectotrasversal.Entidades;
 
 import java.time.LocalDate;
 
-// no se modifica
+
 public class Alumno {
     private int idAlumno;
     private int dni;
