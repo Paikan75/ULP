@@ -234,5 +234,39 @@ public class InscripcionData {
         return inscripciones;
     }
     
+    public List<Materia> obtenerMateriasNoCursadas(int id){
+        
+        ArrayList<Materia> inscripciones= new ArrayList<>();
+         
+         String sql= "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
+                 + " materia WHERE inscripcion.idMateria = materia.IdMateria "
+                 + "AND inscripcion.idAlumno != ?;";
+         
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                
+                Materia mat = new  Materia();
+                mat.setIdMateria(rs.getInt("idMateria"));
+                mat.setNombre(rs.getString("nombre"));
+                mat.setAnoMateria(rs.getInt("año"));
+               
+                inscripciones.add(mat);
+                
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+         
+        return inscripciones;
+    }
+    
     
 }
