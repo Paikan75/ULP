@@ -6,11 +6,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.Entidades.Inscripcion;
+import proyectotransversal.Entidades.Materia;
 
 public class InscripcionData {
 
     private Connection con = null;
+    private AlumnoData ad = new AlumnoData();
+    private MateriaData md = new MateriaData();
 
     public InscripcionData() {
         con = Conexion.getConnection();
@@ -100,6 +104,7 @@ public class InscripcionData {
          ArrayList<Inscripcion> inscripciones= new ArrayList<>();
          
          String sql= "SELECT * FROM inscripcion ";
+         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -108,11 +113,16 @@ public class InscripcionData {
             while (rs.next()){
                 
                 Inscripcion insc = new Inscripcion();
-                insc.setIdInscripcion(rs.getInt("idInscripcion"));
+                insc.setIdInscripcion(rs.getInt("idInscripto"));
+                Alumno alu = ad.buscarAlumno(rs.getInt("idAlumno"));
+                Materia mat = md.buscarMateria(rs.getInt("idMateria"));
                 
-               
-                
+                insc.setAlumno(alu);
+                insc.setMateria(mat);
+                insc.setNota(rs.getDouble("nota"));
+
                 inscripciones.add(insc);
+                
             }
             
              ps.close();
