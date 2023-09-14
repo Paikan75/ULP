@@ -169,24 +169,59 @@ public class InscripcionData {
         return inscripciones;
     }
     
-    public List<Materia> materiasCursadas (int id){
+//    public List<Materia> materiasCursadas (int id){
+//        
+//        ArrayList<Materia> materias = new ArrayList();
+//        
+//        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
+//        
+//        
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, id); 
+//            ResultSet rs = ps.executeQuery();
+//            
+//            while(rs.next()){
+//                
+//                Materia mat = new Materia ();
+//                mat=md.buscarMateria(rs.getInt("IdMateria"));
+//                
+//                materias.add(mat);           
+//                
+//            }
+//            
+//            ps.close();
+//            
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+//        }
+//                
+//        
+//        return materias;
+//        
+//    }
+    public List<Materia> obtenerMateriasCursadas(int id){
         
-        ArrayList<Materia> materias = new ArrayList();
-        
-        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
-        
-        
+        ArrayList<Materia> inscripciones= new ArrayList<>();
+         
+         String sql= "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
+                 + " materia WHERE inscripcion.idMateria = materia.IdMateria "
+                 + "AND inscripcion.idAlumno = ?;";
+         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id); 
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
                 
-                Materia mat = new Materia ();
-                mat=md.buscarMateria(rs.getInt("IdMateria"));
                 
-                materias.add(mat);           
+                Materia mat = new  Materia();
+                mat.setIdMateria(rs.getInt("idMateria"));
+                mat.setNombre(rs.getString("nombre"));
+                mat.setAnoMateria(rs.getInt("año"));
+               
+                inscripciones.add(mat);
                 
             }
             
@@ -195,12 +230,9 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
         }
-                
-        
-        return materias;
-        
+         
+        return inscripciones;
     }
-    
     
     
 }
