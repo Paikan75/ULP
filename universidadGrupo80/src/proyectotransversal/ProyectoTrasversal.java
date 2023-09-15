@@ -2,6 +2,7 @@
 package proyectotransversal;
 
 import java.sql.Connection;
+import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.Entidades.Inscripcion;
 import proyectotransversal.Entidades.Materia;
 import proyectotransversal.accesoADatos.AlumnoData;
@@ -45,9 +46,9 @@ public class ProyectoTrasversal {
 //            System.out.println(inscr);
 //        }
 
-        for(Materia inscr:id.obtenerMateriasCursadas(2)){
-            
-            System.out.println(inscr);
+        for(Alumno alumno: id.obtenerAlumnosPorMateria(1)){
+            System.out.println(alumno);
         }
+
     }
 }
