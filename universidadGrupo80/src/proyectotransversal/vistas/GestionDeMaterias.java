@@ -26,7 +26,6 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLMateria = new javax.swing.JLabel();
         jLCodigo = new javax.swing.JLabel();
@@ -43,8 +42,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         jTFNombre = new javax.swing.JTextField();
         jTFAño = new javax.swing.JTextField();
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("Materia"), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
-        bindingGroup.addBinding(binding);
+        setTitle("Materia");
 
         jLMateria.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLMateria.setText("Materia");
@@ -154,8 +152,6 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38))
         );
 
-        bindingGroup.bind();
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -183,6 +179,5 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFAño;
     private javax.swing.JTextField jTFCodigo;
     private javax.swing.JTextField jTFNombre;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

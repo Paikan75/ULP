@@ -26,8 +26,9 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jlAlumno = new javax.swing.JLabel();
         jLDocumento = new javax.swing.JLabel();
         jLApellido = new javax.swing.JLabel();
@@ -38,21 +39,18 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jTApe = new javax.swing.JTextField();
         jTNom = new javax.swing.JTextField();
         jRBActivo = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jbNuevo = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         setName("Alumnos"); // NOI18N
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("Alumnos"), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
-        bindingGroup.addBinding(binding);
 
         jlAlumno.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jlAlumno.setText("Alumno");
@@ -122,15 +120,13 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jLFechaNacimiento))
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 129, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))
                             .addComponent(jDoc)
                             .addComponent(jTApe, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRBActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRBActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 59, Short.MAX_VALUE)))))
                 .addGap(83, 83, 83)
                 .addComponent(jBBuscar)
                 .addGap(30, 30, 30))
@@ -170,8 +166,8 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLFechaNacimiento)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jBEliminar)
@@ -181,8 +177,6 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         );
 
         getAccessibleContext().setAccessibleName("Alumnos");
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,6 +200,8 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JTextField jDoc;
     private javax.swing.JLabel jLApellido;
     private javax.swing.JLabel jLDocumento;
@@ -217,6 +213,5 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTNom;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JLabel jlAlumno;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

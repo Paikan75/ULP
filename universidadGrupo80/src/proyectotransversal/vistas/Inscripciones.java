@@ -26,7 +26,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -40,8 +39,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jBAnular = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("Formulario de Inscripcion"), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
-        bindingGroup.addBinding(binding);
+        setTitle("Formulario de Inscripcion");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setText("Formulario de Inscripcion");
@@ -141,8 +139,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43))
         );
 
-        bindingGroup.bind();
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,6 +159,5 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRBMateriasNo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTMaterias;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
