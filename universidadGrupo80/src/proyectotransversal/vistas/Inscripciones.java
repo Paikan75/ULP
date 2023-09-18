@@ -5,17 +5,31 @@
  */
 package proyectotransversal.vistas;
 
+import javax.swing.table.DefaultTableModel;
+import proyectotransversal.Entidades.Alumno;
+import proyectotransversal.accesoADatos.AlumnoData;
+
 /**
  *
  * @author Jesica
  */
 public class Inscripciones extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo = new DefaultTableModel(){
+    
+    public boolean isCellEditable(int f, int c){
+    
+    return false;
+    }
+    
+    };
     /**
      * Creates new form Inscripciones
      */
     public Inscripciones() {
         initComponents();
+        armarCabecera();
+        cargarAlumnos();
     }
 
     /**
@@ -49,8 +63,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel3.setText("Listado de Materias");
-
-        jCBSeleccioneAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jRBMateriasIns.setText("Materias Inscriptas");
         jRBMateriasIns.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +163,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBAnular;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jCBSeleccioneAlumno;
+    private javax.swing.JComboBox<Alumno> jCBSeleccioneAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -160,4 +172,25 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTMaterias;
     // End of variables declaration//GEN-END:variables
+
+
+private void armarCabecera(){
+    
+    modelo.addColumn("ID");
+    modelo.addColumn("NOMBRE");
+    modelo.addColumn("AÑO");
+    jTMaterias.setModel(modelo);
+    
+}
+
+private void cargarAlumnos(){
+    
+    AlumnoData alum = new AlumnoData();
+   
+    for(Alumno x:alum.listarAlumno()){
+    jCBSeleccioneAlumno.addItem(x);
+    }
+    
+}
+
 }
