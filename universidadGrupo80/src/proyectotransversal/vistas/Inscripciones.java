@@ -5,6 +5,7 @@
  */
 package proyectotransversal.vistas;
 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.accesoADatos.AlumnoData;
@@ -186,9 +187,9 @@ private void armarCabecera(){
 private void cargarAlumnos(){
     
     AlumnoData alum = new AlumnoData();
-   
-    for(Alumno x:alum.listarAlumno()){
-    jCBSeleccioneAlumno.addItem(x);
+    
+    for(Alumno alu: alum.listarAlumno()){
+        jCBSeleccioneAlumno.addItem(alu);
     }
     
 }
