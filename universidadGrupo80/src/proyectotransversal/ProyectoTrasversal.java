@@ -36,19 +36,19 @@ public class ProyectoTrasversal {
         
     //}
     
-//        for(Alumno alumno:alu.listarAlumno()){
-//            System.out.println(alumno);
-//        }
-        InscripcionData id= new InscripcionData();
-
-//        for(Materia inscr:id.materiasCursadas(2)){
-//            
-//            System.out.println(inscr);
-//        }
-
-        for(Alumno alumno: id.obtenerAlumnosPorMateria(1)){
+        for(Alumno alumno:alu.listarAlumno()){
             System.out.println(alumno);
         }
+//        InscripcionData id= new InscripcionData();
+//
+////        for(Materia inscr:id.materiasCursadas(2)){
+////            
+////            System.out.println(inscr);
+////        }
+//
+//        for(Alumno alumno: id.obtenerAlumnosPorMateria(1)){
+//            System.out.println(alumno);
+//        }
 
     }
 }
