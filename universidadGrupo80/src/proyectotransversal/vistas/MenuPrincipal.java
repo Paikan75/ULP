@@ -83,9 +83,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Administracion");
 
         jMenuItem3.setText("Manejo de Inscripciones");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("Manipulacion de Notas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -120,10 +130,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
          escritorio.removeAll();
         escritorio.repaint();
-        Inscripciones insc = new Inscripciones ();
-        insc.setVisible(true);
-        escritorio.add(insc);
-        escritorio.moveToFront(insc);
+        GestionDeAlumnos gda = new GestionDeAlumnos ();
+        gda.setVisible(true);
+        escritorio.add(gda);
+        escritorio.moveToFront(gda);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -137,6 +147,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(gdm);
         
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        Inscripciones insc = new Inscripciones();
+        insc.setVisible(true);
+        escritorio.add(insc);
+        escritorio.moveToFront(insc);
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        CargaDeNotas cdn = new CargaDeNotas();
+        cdn.setVisible(true);
+        escritorio.add(cdn);
+        escritorio.moveToFront(cdn);
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
