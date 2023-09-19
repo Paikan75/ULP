@@ -73,6 +73,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         });
 
         jRBMateriasNo.setText("Materias No Inscriptas");
+        jRBMateriasNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBMateriasNoActionPerformed(evt);
+            }
+        });
 
         jTMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,14 +162,20 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jRBMateriasInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasInsActionPerformed
         // TODO add your handling code here:
+        jRBMateriasNo.setSelected(false);
     }//GEN-LAST:event_jRBMateriasInsActionPerformed
+
+    private void jRBMateriasNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoActionPerformed
+        // TODO add your handling code here:
+        jRBMateriasIns.setSelected(false);
+    }//GEN-LAST:event_jRBMateriasNoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnular;
     private javax.swing.JButton jBInscribir;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jCBSeleccioneAlumno;
+    private javax.swing.JComboBox<Alumno> jCBSeleccioneAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -189,7 +200,7 @@ private void cargarAlumnos(){
     AlumnoData alum = new AlumnoData();
     
     for(Alumno alu: alum.listarAlumno()){
-        jCBSeleccioneAlumno.addItem(alu.toString());
+        jCBSeleccioneAlumno.addItem(alu);
     }
     
 }
