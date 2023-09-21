@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectotransversal.vistas;
 
 import java.util.List;
@@ -14,23 +9,17 @@ import proyectotransversal.accesoADatos.AlumnoData;
 import proyectotransversal.accesoADatos.InscripcionData;
 import proyectotransversal.accesoADatos.MateriaData;
 
-/**
- *
- * @author Jesica
- */
 public class Inscripciones extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel(){
-    
-    public boolean isCellEditable(int f, int c){
-    
-    return false;
-    }
-    
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        public boolean isCellEditable(int f, int c) {
+
+            return false;
+        }
+
     };
-    /**
-     * Creates new form Inscripciones
-     */
+
     public Inscripciones() {
         initComponents();
         armarCabecera();
@@ -103,8 +92,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTMaterias);
 
         jBInscribir.setText("Inscribir");
+        jBInscribir.setEnabled(false);
 
         jBAnular.setText("Anular Inscripcion");
+        jBAnular.setEnabled(false);
 
         jBSalir.setText("Salir");
 
@@ -171,27 +162,36 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRBMateriasInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasInsActionPerformed
-        // TODO add your handling code here:
+        //deseleccion el radiobutton mat. no inscriptas
         jRBMateriasNo.setSelected(false);
+        //Habilita el boton anular y deshabilita el boton iscribir
+        jBAnular.setEnabled(true);
+        jBInscribir.setEnabled(false);
+
+        borrarTabla();
+        Alumno aluSelec = (Alumno) jCBSeleccioneAlumno.getSelectedItem();
+        cargarDatos(aluSelec);
     }//GEN-LAST:event_jRBMateriasInsActionPerformed
 
     private void jCBSeleccioneAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSeleccioneAlumnoActionPerformed
-        // TODO add your handling code here:
-            
-            Alumno aluSelec = (Alumno)jCBSeleccioneAlumno.getSelectedItem();
-            cargarDatos(aluSelec);
 
-        
-        
+        borrarTabla();
+        Alumno aluSelec = (Alumno) jCBSeleccioneAlumno.getSelectedItem();
+        cargarDatos(aluSelec);
     }//GEN-LAST:event_jCBSeleccioneAlumnoActionPerformed
 
     private void jRBMateriasNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoActionPerformed
-        // TODO add your handling code here:
+        //deseleccion el radiobutton mat. inscriptas
         jRBMateriasIns.setSelected(false);
-        
+        //Habilita el boton inscribir y deshabilita el boton anular inscripcion
+        jBInscribir.setEnabled(true);
+        jBAnular.setEnabled(false);
+        borrarTabla();
+        Alumno aluSelec = (Alumno) jCBSeleccioneAlumno.getSelectedItem();
+        cargarDatos(aluSelec);
+
     }//GEN-LAST:event_jRBMateriasNoActionPerformed
 
-                                              
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnular;
@@ -207,42 +207,58 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTMaterias;
     // End of variables declaration//GEN-END:variables
 
+    private void armarCabecera() {
 
-private void armarCabecera(){
-    
-    modelo.addColumn("ID");
-    modelo.addColumn("NOMBRE");
-    modelo.addColumn("AÑO");
-    jTMaterias.setModel(modelo);
-    
-}
-
-private void cargarAlumnos(){
-    
-    AlumnoData alum = new AlumnoData();
-    
-    for(Alumno alu: alum.listarAlumno()){
-        jCBSeleccioneAlumno.addItem(alu);
-    }
-    
-}
-
-private void cargarDatos(Alumno alumno){
-    
-    InscripcionData insc = new InscripcionData();
-
-    List<Materia> obtenerMateriasNoCursadas = insc.obtenerMateriasNoCursadas(alumno.getIdAlumno());
-
-    for (Materia materia : obtenerMateriasNoCursadas) {
-
-        modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnoMateria()});
+        modelo.addColumn("ID");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("AÑO");
+        jTMaterias.setModel(modelo);
 
     }
-     
- }
 
+    private void cargarAlumnos() {
 
+        AlumnoData alum = new AlumnoData();
 
+        for (Alumno alu : alum.listarAlumno()) {
+            jCBSeleccioneAlumno.addItem(alu);
+        }
 
+    }
+
+    private void cargarDatos(Alumno alumno) {
+
+        InscripcionData insc = new InscripcionData();
+
+        List<Materia> obtenerMateriasNoCursadas = insc.obtenerMateriasNoCursadas(alumno.getIdAlumno());
+        List<Materia> obtenerMateriasCursadas = insc.obtenerMateriasCursadas(alumno.getIdAlumno());
+        
+        if (jRBMateriasNo.isSelected()) {
+            for (Materia materia : obtenerMateriasNoCursadas) {
+
+                modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnoMateria()});
+
+            }
+
+        } else if (jRBMateriasIns.isSelected()) {
+            for (Materia materia : obtenerMateriasCursadas) {
+
+                modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnoMateria()});
+
+            }
+        }
+    }
+
+    private void borrarTabla() {
+
+        //Contamos las filas de la tabla, restamos 1 porque el indice comienza en 0.
+        int filas = jTMaterias.getRowCount() - 1;
+
+        //Borramos de forma descendente para no alterar el indice
+        for (; filas >= 0; filas--) {
+            modelo.removeRow(filas);
+        }
+
+    }
 
 }
