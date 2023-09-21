@@ -6,9 +6,13 @@
 package proyectotransversal.vistas;
 
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import proyectotransversal.Entidades.Alumno;
+import proyectotransversal.Entidades.Materia;
 import proyectotransversal.accesoADatos.AlumnoData;
+import proyectotransversal.accesoADatos.InscripcionData;
+import proyectotransversal.accesoADatos.MateriaData;
 
 /**
  *
@@ -64,6 +68,12 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel3.setText("Listado de Materias");
+
+        jCBSeleccioneAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBSeleccioneAlumnoActionPerformed(evt);
+            }
+        });
 
         jRBMateriasIns.setText("Materias Inscriptas");
         jRBMateriasIns.addActionListener(new java.awt.event.ActionListener() {
@@ -165,11 +175,23 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jRBMateriasNo.setSelected(false);
     }//GEN-LAST:event_jRBMateriasInsActionPerformed
 
+    private void jCBSeleccioneAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSeleccioneAlumnoActionPerformed
+        // TODO add your handling code here:
+            
+            Alumno aluSelec = (Alumno)jCBSeleccioneAlumno.getSelectedItem();
+            cargarDatos(aluSelec);
+
+        
+        
+    }//GEN-LAST:event_jCBSeleccioneAlumnoActionPerformed
+
     private void jRBMateriasNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoActionPerformed
         // TODO add your handling code here:
         jRBMateriasIns.setSelected(false);
+        
     }//GEN-LAST:event_jRBMateriasNoActionPerformed
 
+                                              
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnular;
@@ -204,5 +226,23 @@ private void cargarAlumnos(){
     }
     
 }
+
+private void cargarDatos(Alumno alumno){
+    
+    InscripcionData insc = new InscripcionData();
+
+    List<Materia> obtenerMateriasNoCursadas = insc.obtenerMateriasNoCursadas(alumno.getIdAlumno());
+
+    for (Materia materia : obtenerMateriasNoCursadas) {
+
+        modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(), materia.getAnoMateria()});
+
+    }
+     
+ }
+
+
+
+
 
 }
