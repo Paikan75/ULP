@@ -310,6 +310,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         
     }
 
+    //este metodo borra los datos que se ven en la tabla.
     private void borrarTabla() {
 
         //Contamos las filas de la tabla, restamos 1 porque el indice comienza en 0.
