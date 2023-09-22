@@ -176,6 +176,9 @@
         <Property name="text" type="java.lang.String" value="Inscribir"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBInscribirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBAnular">
       <Properties>
@@ -187,6 +190,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalirActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

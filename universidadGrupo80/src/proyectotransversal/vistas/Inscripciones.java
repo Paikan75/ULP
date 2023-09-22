@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 import proyectotransversal.Entidades.Alumno;
+import proyectotransversal.Entidades.Inscripcion;
 import proyectotransversal.Entidades.Materia;
 import proyectotransversal.accesoADatos.AlumnoData;
 import proyectotransversal.accesoADatos.InscripcionData;
@@ -93,11 +94,21 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jBInscribir.setText("Inscribir");
         jBInscribir.setEnabled(false);
+        jBInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInscribirActionPerformed(evt);
+            }
+        });
 
         jBAnular.setText("Anular Inscripcion");
         jBAnular.setEnabled(false);
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,6 +202,25 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         cargarDatos(aluSelec);
 
     }//GEN-LAST:event_jRBMateriasNoActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+       
+// Cierra y deshabilita el internal frame
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
+       
+//        Inscripcion inscN= new Inscripcion();
+//        inscN.setAlumno(newjCBSeleccioneAlumno.getSelectedItem().);
+//        InscripcionData insc = new InscripcionData();
+//        
+//        insc.guardarInscripcion();
+        
+        
+    }//GEN-LAST:event_jBInscribirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
