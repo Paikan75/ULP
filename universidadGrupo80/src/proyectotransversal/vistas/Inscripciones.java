@@ -131,7 +131,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                                 .addComponent(jBAnular)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBSalir))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
@@ -159,9 +159,9 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBMateriasIns)
                     .addComponent(jRBMateriasNo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBInscribir)
                     .addComponent(jBAnular)
@@ -213,11 +213,14 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
        
-//        Inscripcion inscN= new Inscripcion();
-//        inscN.setAlumno(newjCBSeleccioneAlumno.getSelectedItem().);
-//        InscripcionData insc = new InscripcionData();
-//        
-//        insc.guardarInscripcion();
+        Inscripcion inscN= new Inscripcion();
+        inscN.setAlumno((Alumno)jCBSeleccioneAlumno.getSelectedItem());
+        int filaSeleccionada=jTMaterias.getSelectedRow();
+        int id = (int)(jTMaterias.getValueAt(filaSeleccionada, 0));
+        MateriaData mat=new MateriaData ();
+        inscN.setMateria(mat.buscarMateria(id));
+        InscripcionData insc = new InscripcionData();
+        insc.guardarInscripcion(inscN);
         
         
     }//GEN-LAST:event_jBInscribirActionPerformed
