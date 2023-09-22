@@ -261,6 +261,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTMaterias;
     // End of variables declaration//GEN-END:variables
 
+    //este metodo carga los nombres de las columnas de la tabla.
     private void armarCabecera() {
 
         modelo.addColumn("ID");
@@ -270,6 +271,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     }
 
+    //este metodo carga la lista de alumnos en el combo box.
     private void cargarAlumnos() {
 
         AlumnoData alum = new AlumnoData();
@@ -279,7 +281,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         }
 
     }
-
+    
+    //este metodo carga los datos  en la tabla.
     private void cargarDatos(Alumno alumno) {
 
         InscripcionData insc = new InscripcionData();
