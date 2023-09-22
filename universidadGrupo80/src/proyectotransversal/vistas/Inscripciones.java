@@ -102,6 +102,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jBAnular.setText("Anular Inscripcion");
         jBAnular.setEnabled(false);
+        jBAnular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAnularActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -214,16 +219,32 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
        
         Inscripcion inscN= new Inscripcion();
+        //crear variable
         inscN.setAlumno((Alumno)jCBSeleccioneAlumno.getSelectedItem());
         int filaSeleccionada=jTMaterias.getSelectedRow();
         int id = (int)(jTMaterias.getValueAt(filaSeleccionada, 0));
         MateriaData mat=new MateriaData ();
         inscN.setMateria(mat.buscarMateria(id));
+        inscN.setNota(0);
         InscripcionData insc = new InscripcionData();
         insc.guardarInscripcion(inscN);
-        
+        cargarDatos((Alumno)jCBSeleccioneAlumno.getSelectedItem());
         
     }//GEN-LAST:event_jBInscribirActionPerformed
+
+    private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
+
+        int filaSeleccionada=jTMaterias.getSelectedRow();
+        int idMateria = (int)(jTMaterias.getValueAt(filaSeleccionada, 0));
+        
+        Alumno alum= (Alumno)jCBSeleccioneAlumno.getSelectedItem();
+        
+        InscripcionData insc = new InscripcionData();
+        insc.borrarInscripcionMateriaAlumno(alum.getIdAlumno(), idMateria);
+        cargarDatos(alum);
+
+
+    }//GEN-LAST:event_jBAnularActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -280,6 +301,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
             }
         }
+        
+   
+        
+        
     }
 
     private void borrarTabla() {

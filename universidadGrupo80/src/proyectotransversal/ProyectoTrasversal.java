@@ -2,13 +2,14 @@
 package proyectotransversal;
 
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Month;
 import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.Entidades.Inscripcion;
 import proyectotransversal.Entidades.Materia;
-import proyectotransversal.accesoADatos.AlumnoData;
 import proyectotransversal.accesoADatos.Conexion;
 import proyectotransversal.accesoADatos.InscripcionData;
-import proyectotransversal.accesoADatos.MateriaData;
+
 
 
 public class ProyectoTrasversal {
@@ -18,37 +19,17 @@ public class ProyectoTrasversal {
        
         Connection conex = Conexion.getConnection();
         
-        //Alumno juan = new Alumno(12456876,"Flores","Roberto",LocalDate.of(2012, Month.MARCH, 15),true);
         
-        AlumnoData alu = new AlumnoData();
-        MateriaData mat = new MateriaData();
+        Alumno alum = new Alumno (1,12456876,"Flores","Juan Roberto",LocalDate.of(2012, 3, 15),true);
+        Materia mat = new Materia (1,"Matematica",1,true);
         
-        //alu.guardarAlumno(juan);
+             
         
-        //alu.modificarAlumno(juan);
+        Inscripcion inscN =new Inscripcion(alum,mat,10);
         
-        //alu.eliminarAlumno(1);
+        InscripcionData inscDATA = new InscripcionData();
+        inscDATA.guardarInscripcion(inscN);
         
-        //Alumno alumnoEncontrado=alu.buscarAlumnoPorDni(12456876);
-        
-        //if(alumnoEncontrado!=null){
-        //System.out.println(alumnoEncontrado.toString());
-        
-    //}
-    
-        for(Alumno alumno:alu.listarAlumno()){
-            System.out.println(alumno);
-        }
-//        InscripcionData id= new InscripcionData();
-//
-////        for(Materia inscr:id.materiasCursadas(2)){
-////            
-////            System.out.println(inscr);
-////        }
-//
-//        for(Alumno alumno: id.obtenerAlumnosPorMateria(1)){
-//            System.out.println(alumno);
-//        }
 
     }
 }

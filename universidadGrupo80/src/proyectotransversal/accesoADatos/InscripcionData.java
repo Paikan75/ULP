@@ -23,13 +23,13 @@ public class InscripcionData {
 
     public void guardarInscripcion (Inscripcion insc){
     
-        String sql = "INSERT INTO inscripcion(nota,idAlumno, idMateria) VALUES null,?,?";
+        String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria) VALUES (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
           
-            
-            ps.setInt(1, insc.getAlumno().getIdAlumno());
-            ps.setInt(2, insc.getMateria().getIdMateria());
+            ps.setDouble(1,insc.getNota());
+            ps.setInt(2, insc.getAlumno().getIdAlumno());
+            ps.setInt(3, insc.getMateria().getIdMateria());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -205,7 +205,7 @@ public class InscripcionData {
 //        return materias;
 //        
 //    }
-    public List<Materia> obtenerMateriasCursadas(int id){
+    public List<Materia> obtenerMateriasCursadas(int idAlumno){
         
         ArrayList<Materia> inscripciones= new ArrayList<>();
          
@@ -215,7 +215,7 @@ public class InscripcionData {
          
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, idAlumno);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
@@ -239,17 +239,17 @@ public class InscripcionData {
         return inscripciones;
     }
     
-    public List<Materia> obtenerMateriasNoCursadas(int id){
+    public List<Materia> obtenerMateriasNoCursadas(int idAlumno){
         
         ArrayList<Materia> inscripciones= new ArrayList<>();
          
          String sql= "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
                  + " materia WHERE inscripcion.idMateria = materia.IdMateria "
-                 + "AND inscripcion.idAlumno != ?;";
+                 + "AND inscripcion.idAlumno = ?;";
          
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, idAlumno);
             
             ResultSet rs = ps.executeQuery();
             
