@@ -180,6 +180,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private void jRBMateriasInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasInsActionPerformed
         //deseleccion el radiobutton mat. no inscriptas
         jRBMateriasNo.setSelected(false);
+        
         //Habilita el boton anular y deshabilita el boton iscribir
         jBAnular.setEnabled(true);
         jBInscribir.setEnabled(false);
@@ -199,9 +200,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private void jRBMateriasNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoActionPerformed
         //deseleccion el radiobutton mat. inscriptas
         jRBMateriasIns.setSelected(false);
+        
         //Habilita el boton inscribir y deshabilita el boton anular inscripcion
         jBInscribir.setEnabled(true);
         jBAnular.setEnabled(false);
+        
         borrarTabla();
         Alumno aluSelec = (Alumno) jCBSeleccioneAlumno.getSelectedItem();
         cargarDatos(aluSelec);
@@ -210,9 +213,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
        
-// Cierra y deshabilita el internal frame
+    // Cierra y deshabilita el internal frame
         this.dispose();
-        
         
     }//GEN-LAST:event_jBSalirActionPerformed
 
@@ -261,6 +263,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTMaterias;
     // End of variables declaration//GEN-END:variables
 
+    //este metodo carga los nombres de las columnas de la tabla.
     private void armarCabecera() {
 
         modelo.addColumn("ID");
@@ -270,6 +273,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     }
 
+    //este metodo carga la lista de alumnos en el combo box.
     private void cargarAlumnos() {
 
         AlumnoData alum = new AlumnoData();
@@ -279,7 +283,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         }
 
     }
-
+    
+    //este metodo carga los datos  en la tabla.
     private void cargarDatos(Alumno alumno) {
 
         InscripcionData insc = new InscripcionData();
@@ -301,12 +306,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
             }
         }
-        
-   
-        
-        
+
     }
 
+    //este metodo borra los datos que se ven en la tabla.
     private void borrarTabla() {
 
         //Contamos las filas de la tabla, restamos 1 porque el indice comienza en 0.
