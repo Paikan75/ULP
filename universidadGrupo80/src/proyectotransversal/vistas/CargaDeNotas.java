@@ -7,6 +7,7 @@ import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.Entidades.Inscripcion;
 import proyectotransversal.accesoADatos.AlumnoData;
 import proyectotransversal.accesoADatos.InscripcionData;
+import proyectotransversal.accesoADatos.MateriaData;
 
 
 public class CargaDeNotas extends javax.swing.JInternalFrame {
@@ -41,7 +42,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCBListaAlumnos = new javax.swing.JComboBox<>();
+        jCBAlumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTNotas = new javax.swing.JTable();
         jBGuardar = new javax.swing.JButton();
@@ -54,9 +55,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un alumno:");
 
-        jCBListaAlumnos.addActionListener(new java.awt.event.ActionListener() {
+        jCBAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBListaAlumnosActionPerformed(evt);
+                jCBAlumnosActionPerformed(evt);
             }
         });
 
@@ -71,9 +72,20 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTNotas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTNotasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTNotas);
 
         jBGuardar.setText("Guardar");
+        jBGuardar.setEnabled(false);
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.setActionCommand("");
@@ -94,7 +106,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCBListaAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jCBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -114,7 +126,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jCBListaAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
@@ -131,17 +143,50 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
-    private void jCBListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBListaAlumnosActionPerformed
+    private void jCBAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnosActionPerformed
         borrarTabla();
-        Alumno aluSelec = (Alumno) jCBListaAlumnos.getSelectedItem();
+        Alumno aluSelec = (Alumno) jCBAlumnos.getSelectedItem();
         cargarDatos(aluSelec.getIdAlumno());    
-    }//GEN-LAST:event_jCBListaAlumnosActionPerformed
+    }//GEN-LAST:event_jCBAlumnosActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+       
+        
+        InscripcionData InscD= new InscripcionData();
+        Alumno alum =(Alumno)jCBAlumnos.getSelectedItem();
+        
+        int filaSeleccionada=jTNotas.getSelectedRow();
+        int idMat = (Integer)(jTNotas.getValueAt(filaSeleccionada, 0));
+        
+        double nota = (Double)(jTNotas.getValueAt(filaSeleccionada, 2));
+        
+              
+        InscD.actualizarNota(alum.getIdAlumno(),idMat , nota);
+        
+        
+        
+        
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jTNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTNotasMouseClicked
+      
+        int filaSelec = jTNotas.getSelectedRow();
+        
+        if (filaSelec !=-1){
+            
+            jBGuardar.setEnabled(true);
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_jTNotasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<Alumno> jCBListaAlumnos;
+    private javax.swing.JComboBox<Alumno> jCBAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -162,7 +207,7 @@ private void cargarAlumnos() {
         AlumnoData alum = new AlumnoData();
 
         for (Alumno alu : alum.listarAlumno()) {
-            jCBListaAlumnos.addItem(alu);
+            jCBAlumnos.addItem(alu);
         }
 
     }

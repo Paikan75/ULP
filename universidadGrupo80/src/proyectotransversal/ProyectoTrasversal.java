@@ -17,18 +17,18 @@ public class ProyectoTrasversal {
    
     public static void main(String[] args) {
        
-        Connection conex = Conexion.getConnection();
-        
-        
-        Alumno alum = new Alumno (1,12456876,"Flores","Juan Roberto",LocalDate.of(2012, 3, 15),true);
-        Materia mat = new Materia (1,"Matematica",1,true);
-        
-             
-        
-        Inscripcion inscN =new Inscripcion(alum,mat,10);
-        
-        InscripcionData inscDATA = new InscripcionData();
-        inscDATA.guardarInscripcion(inscN);
+//        Connection conex = Conexion.getConnection();
+//        
+//        
+//        Alumno alum = new Alumno (1,12456876,"Flores","Juan Roberto",LocalDate.of(2012, 3, 15),true);
+//        Materia mat = new Materia (1,"Matematica",1,true);
+//        
+//             
+//        
+//        Inscripcion inscN =new Inscripcion(alum,mat,10);
+//        
+//        InscripcionData inscDATA = new InscripcionData();
+//        inscDATA.guardarInscripcion(inscN);
         
 
     }

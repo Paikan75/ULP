@@ -222,8 +222,6 @@ public class Inscripciones extends javax.swing.JInternalFrame {
        
         Inscripcion inscN= new Inscripcion();
         Alumno aluSelect = ((Alumno)jCBSeleccioneAlumno.getSelectedItem()); // alumno del combobox se cro una variable de almacenamiento
-        
-        //crear variable
         inscN.setAlumno(aluSelect);
         int filaSeleccionada=jTMaterias.getSelectedRow();
         int id = (int)(jTMaterias.getValueAt(filaSeleccionada, 0));
