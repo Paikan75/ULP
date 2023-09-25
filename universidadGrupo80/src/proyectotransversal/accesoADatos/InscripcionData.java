@@ -159,7 +159,7 @@ public class InscripcionData {
                 
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
-                insc.setNota(id);
+                insc.setNota(insc.getNota());
                 
                 inscripciones.add(insc);
                 
@@ -242,9 +242,9 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasNoCursadas(int idAlumno){
         
         ArrayList<Materia> inscripciones= new ArrayList<>();
-         
+         // el primer Select indica o devuelve todo lo que no estee incluido en el segundo Select.
          String sql="SELECT * FROM materia WHERE materia.idMateria "
-                 + "NOT IN (SELECT materia.idMateria from materia,inscripcion where "
+                 + "NOT IN (SELECT materia.idMateria from materia,inscripcion where " // la coma es un join.
                  + "materia.idMateria = inscripcion.IdMateria AND inscripcion.idAlumno = ?);";
          
         try {
