@@ -243,9 +243,9 @@ public class InscripcionData {
         
         ArrayList<Materia> inscripciones= new ArrayList<>();
          
-         String sql= "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
-                 + " materia WHERE inscripcion.idMateria = materia.IdMateria "
-                 + "AND inscripcion.idAlumno = ?;";
+         String sql="SELECT * FROM materia WHERE materia.idMateria "
+                 + "NOT IN (SELECT materia.idMateria from materia,inscripcion where "
+                 + "materia.idMateria = inscripcion.IdMateria AND inscripcion.idAlumno = ?);";
          
         try {
             PreparedStatement ps = con.prepareStatement(sql);
