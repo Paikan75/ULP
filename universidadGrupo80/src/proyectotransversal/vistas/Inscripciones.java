@@ -222,6 +222,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
        
         Inscripcion inscN= new Inscripcion();
         Alumno aluSelect = ((Alumno)jCBSeleccioneAlumno.getSelectedItem()); // alumno del combobox se cro una variable de almacenamiento
+        
         //crear variable
         inscN.setAlumno(aluSelect);
         int filaSeleccionada=jTMaterias.getSelectedRow();
@@ -229,6 +230,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         MateriaData mat=new MateriaData ();
         inscN.setMateria(mat.buscarMateria(id));
         inscN.setNota(0);
+        
         InscripcionData insc = new InscripcionData();
         insc.guardarInscripcion(inscN);
         borrarTabla();

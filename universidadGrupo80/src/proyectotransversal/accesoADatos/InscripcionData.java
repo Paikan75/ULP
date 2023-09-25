@@ -24,6 +24,7 @@ public class InscripcionData {
     public void guardarInscripcion (Inscripcion insc){
     
         String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria) VALUES (?,?,?)";
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
           
@@ -32,11 +33,14 @@ public class InscripcionData {
             ps.setInt(3, insc.getMateria().getIdMateria());
             
             ps.executeUpdate();
+            
             ResultSet rs = ps.getGeneratedKeys();
+            
             if(rs.next()){
              insc.setIdInscripcion(rs.getInt(1));
              JOptionPane.showMessageDialog(null,"Inscripcion creada con exito");
             }
+            
            ps.close();
             
         } catch (SQLException ex) {
