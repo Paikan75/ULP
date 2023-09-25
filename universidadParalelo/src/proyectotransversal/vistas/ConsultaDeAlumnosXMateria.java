@@ -137,7 +137,7 @@ public class ConsultaDeAlumnosXMateria extends javax.swing.JInternalFrame {
     private void jCBMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMateriasActionPerformed
 
         borrarTabla();
-        Materia matSelec = (Materia) jCBMaterias.getSelectedItem();
+        Materia matSelec = (Materia)jCBMaterias.getSelectedItem();
         cargarAlumnos(matSelec);
 
 

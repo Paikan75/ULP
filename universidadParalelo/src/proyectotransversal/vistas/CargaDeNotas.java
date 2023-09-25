@@ -1,21 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyectotransversal.vistas;
 
-/**
- *
- * @author Jesica
- */
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import proyectotransversal.Entidades.Alumno;
+import proyectotransversal.Entidades.Inscripcion;
+import proyectotransversal.Entidades.Materia;
+import proyectotransversal.accesoADatos.AlumnoData;
+import proyectotransversal.accesoADatos.InscripcionData;
+
+
 public class CargaDeNotas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormularioDeInscripcion
-     */
+    private DefaultTableModel modelo = new DefaultTableModel(){
+        
+        public boolean isCellEditable(int f,int c){
+        
+        return false;
+        }
+    };
     public CargaDeNotas() {
         initComponents();
+        armarCabecera();
+        cargarAlumnos();
+      
     }
 
     /**
@@ -31,7 +39,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jCBListaAlumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTNotas = new javax.swing.JTable();
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
@@ -42,9 +50,13 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un alumno:");
 
-        jCBListaAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBListaAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBListaAlumnosActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,12 +67,17 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTNotas);
 
         jBGuardar.setText("Guardar");
 
         jBSalir.setText("Salir");
         jBSalir.setActionCommand("");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,14 +123,100 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+    this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jCBListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBListaAlumnosActionPerformed
+        
+        borrarTabla();
+        Alumno aluSelec = (Alumno) jCBListaAlumnos.getSelectedItem();
+        cargarDatos(aluSelec.getIdAlumno());
+        
+        
+    }//GEN-LAST:event_jCBListaAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jCBListaAlumnos;
+    private javax.swing.JComboBox<Alumno> jCBListaAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTNotas;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera (){
+    
+    modelo.addColumn("ID MATERIA");
+    modelo.addColumn("NOMBRE");
+    modelo.addColumn("NOTA");
+    jTNotas.setModel(modelo);
+        
+}
+
+private void cargarAlumnos() {
+
+        AlumnoData alum = new AlumnoData();
+
+        for (Alumno alu : alum.listarAlumno()) {
+            jCBListaAlumnos.addItem(alu);
+        }
+
+    }
+
+//  private void cargarDatos(Alumno alumno) {
+//
+//        
+//        InscripcionData insc = new InscripcionData();
+//
+//       
+//        List<Materia> obtenerMateriasCursadas = insc.obtenerMateriasCursadas(alumno.getIdAlumno());
+//        List<Inscripcion> obtenerInsc = insc.obtenerInscripcionesPorAlumno(alumno.getIdAlumno());
+//        
+//            for (Materia materia : obtenerMateriasCursadas) {
+//
+//                modelo.addRow(new Object[]{materia.getIdMateria(), materia.getNombre(),()});
+//
+//            }
+//        
+//            
+//        }
+
+  private void cargarDatos(int idAlum) {
+
+        
+        InscripcionData insc = new InscripcionData();
+
+       List<Inscripcion> obtenerInsc = insc.obtenerInscripcionesPorAlumno(idAlum);
+        
+            for (Inscripcion inscripcion : obtenerInsc) {
+
+                modelo.addRow(new Object[]{inscripcion.getMateria().getIdMateria(),inscripcion.getMateria().getNombre(),inscripcion.getNota()});
+
+            }
+        
+            
+        }
+
+
+        
+private void borrarTabla(){
+    
+    int filas = jTNotas.getRowCount()-1;
+    
+    for(; filas>=0;filas--){
+        
+        modelo.removeRow(filas);
+    }
+    
+    
+    
+}
+
+
+
+
+
 }

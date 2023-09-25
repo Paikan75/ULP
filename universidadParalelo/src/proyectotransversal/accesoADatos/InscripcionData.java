@@ -23,13 +23,16 @@ public class InscripcionData {
 
     public void guardarInscripcion (Inscripcion insc){
     
-        String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria) VALUES (?,?,?)";
+        String sql = "INSERT INTO inscripcion(nota, idAlumno, idMateria) SELECT ?, ?, ?"
+                + " from DUAL WHERE not exists (SELECT * FROM inscripcion WHERE idAlumno = ? and idMateria = ?);";
         try {
             PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
           
             ps.setDouble(1,insc.getNota());
             ps.setInt(2, insc.getAlumno().getIdAlumno());
             ps.setInt(3, insc.getMateria().getIdMateria());
+            ps.setInt(4, insc.getAlumno().getIdAlumno());
+            ps.setInt(5, insc.getMateria().getIdMateria());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -159,7 +162,7 @@ public class InscripcionData {
                 
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
-                insc.setNota(id);
+                insc.setNota(insc.getNota());
                 
                 inscripciones.add(insc);
                 

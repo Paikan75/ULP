@@ -305,8 +305,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         }
         
-        obtenerMateriasNoCursadas.clear();
-        obtenerMateriasCursadas.clear();
+//        obtenerMateriasNoCursadas.clear();
+//        obtenerMateriasCursadas.clear();
     }
 
     private void borrarTabla() {
