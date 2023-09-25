@@ -221,8 +221,9 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
        
         Inscripcion inscN= new Inscripcion();
+        Alumno aluSelect = ((Alumno)jCBSeleccioneAlumno.getSelectedItem()); // alumno del combobox se cro una variable de almacenamiento
         //crear variable
-        inscN.setAlumno((Alumno)jCBSeleccioneAlumno.getSelectedItem());
+        inscN.setAlumno(aluSelect);
         int filaSeleccionada=jTMaterias.getSelectedRow();
         int id = (int)(jTMaterias.getValueAt(filaSeleccionada, 0));
         MateriaData mat=new MateriaData ();
@@ -230,7 +231,8 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         inscN.setNota(0);
         InscripcionData insc = new InscripcionData();
         insc.guardarInscripcion(inscN);
-        cargarDatos((Alumno)jCBSeleccioneAlumno.getSelectedItem());
+        borrarTabla();
+        cargarDatos(aluSelect);
         
     }//GEN-LAST:event_jBInscribirActionPerformed
 
@@ -243,6 +245,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         
         InscripcionData insc = new InscripcionData();
         insc.borrarInscripcionMateriaAlumno(alum.getIdAlumno(), idMateria);
+        borrarTabla ();
         cargarDatos(alum);
 
 
