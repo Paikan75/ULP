@@ -219,7 +219,7 @@ public class InscripcionData {
          // el primer Select indica o devuelve todo lo que no estee incluido en el segundo Select.
          String sql="SELECT * FROM materia WHERE materia.estado=1 And materia.idMateria "
                  + "NOT IN (SELECT materia.idMateria from materia,inscripcion where "
-                 + "materia.idMateria = inscripcion.IdMateria AND inscripcion.idAlumno = 1)";
+                 + "materia.idMateria = inscripcion.IdMateria AND inscripcion.idAlumno = ?)";
          
         try {
             PreparedStatement ps = con.prepareStatement(sql);
