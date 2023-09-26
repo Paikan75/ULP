@@ -160,10 +160,10 @@ public class InscripcionData {
                 
                 Alumno alu = ad.buscarAlumno(rs.getInt("idAlumno"));
                 Materia mat = md.buscarMateria(rs.getInt("idMateria"));
-                
+                              
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
-                insc.setNota(insc.getNota());
+                insc.setNota(rs.getDouble("nota"));
                 
                 inscripciones.add(insc);
                 
@@ -178,37 +178,7 @@ public class InscripcionData {
         return inscripciones;
     }
     
-//    public List<Materia> materiasCursadas (int id){
-//        
-//        ArrayList<Materia> materias = new ArrayList();
-//        
-//        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
-//        
-//        
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, id); 
-//            ResultSet rs = ps.executeQuery();
-//            
-//            while(rs.next()){
-//                
-//                Materia mat = new Materia ();
-//                mat=md.buscarMateria(rs.getInt("IdMateria"));
-//                
-//                materias.add(mat);           
-//                
-//            }
-//            
-//            ps.close();
-//            
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
-//        }
-//                
-//        
-//        return materias;
-//        
-//    }
+
     public List<Materia> obtenerMateriasCursadas(int idAlumno){
         
         ArrayList<Materia> inscripciones= new ArrayList<>();
@@ -247,9 +217,9 @@ public class InscripcionData {
         
         ArrayList<Materia> inscripciones= new ArrayList<>();
          // el primer Select indica o devuelve todo lo que no estee incluido en el segundo Select.
-         String sql="SELECT * FROM materia WHERE materia.idMateria "
-                 + "NOT IN (SELECT materia.idMateria from materia,inscripcion where " // la coma es un join.
-                 + "materia.idMateria = inscripcion.IdMateria AND inscripcion.idAlumno = ?);";
+         String sql="SELECT * FROM materia WHERE materia.estado=1 And materia.idMateria "
+                 + "NOT IN (SELECT materia.idMateria from materia,inscripcion where "
+                 + "materia.idMateria = inscripcion.IdMateria AND inscripcion.idAlumno = 1)";
          
         try {
             PreparedStatement ps = con.prepareStatement(sql);

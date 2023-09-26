@@ -157,12 +157,14 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         
         int filaSeleccionada=jTNotas.getSelectedRow();
         int idMat = (Integer)(jTNotas.getValueAt(filaSeleccionada, 0));
-        
-        double nota = (Double)(jTNotas.getValueAt(filaSeleccionada, 2));
-        
-              
+                
+     
+        double nota = Double.parseDouble((String) jTNotas.getValueAt(filaSeleccionada, 2));
+         System.out.println(nota);     
         InscD.actualizarNota(alum.getIdAlumno(),idMat , nota);
         
+        borrarTabla();
+        cargarDatos(alum.getIdAlumno());        
         
         
         
@@ -225,6 +227,8 @@ private void cargarAlumnos() {
                 modelo.addRow(new Object[]{inscripcion.getMateria().getIdMateria(),inscripcion.getMateria().getNombre(),inscripcion.getNota()});
 
             }
+            
+          
         
             
         }
