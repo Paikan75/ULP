@@ -172,7 +172,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Ingrese solo numeros.");
             
         }catch (ClassCastException x) {
-            JOptionPane.showMessageDialog(null, "Recuerde presioanr enter luego de ingresar la nota.");
+            JOptionPane.showMessageDialog(null, "Recuerde presionar enter luego de ingresar la nota.");
         }
         
         
@@ -218,9 +218,11 @@ private void cargarAlumnos() {
         AlumnoData alum = new AlumnoData();
 
         for (Alumno alu : alum.listarAlumno()) {
+            
+            if(alu.isActivo()==true){
             jCBAlumnos.addItem(alu);
         }
-
+        }
     }
 
 

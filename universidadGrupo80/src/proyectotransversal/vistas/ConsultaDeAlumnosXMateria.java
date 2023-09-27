@@ -162,8 +162,12 @@ private void armarCabecera() {
         MateriaData matd = new MateriaData();
 
         for (Materia x : matd.listarMateria()) {
+            
+            if(x.isActivo()==true){
             jCBMaterias.addItem(x);
         }
+        }
+        
 
     }
     

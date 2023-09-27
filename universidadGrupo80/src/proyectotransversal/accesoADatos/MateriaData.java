@@ -25,7 +25,7 @@ public class MateriaData {
 
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnoMateria());
-            ps.setBoolean(3, materia.isEstado());
+            ps.setBoolean(3, materia.isActivo());
 
             ps.executeUpdate();
 
@@ -89,7 +89,7 @@ public class MateriaData {
     }
 
     public Materia buscarMateria(int id) {
-        String sql = "SELECT * FROM materia WHERE idMateria = ? and estado = 1";
+        String sql = "SELECT * FROM materia WHERE idMateria = ?";
         Materia materia = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -102,7 +102,7 @@ public class MateriaData {
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnoMateria(rs.getInt("Año"));
-                materia.setEstado(true);
+                materia.setActivo(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "La Materia no existe o esta exterminada");
             }
@@ -118,7 +118,7 @@ public class MateriaData {
     }
 
     public List<Materia> listarMateria() {
-        String sql = "SELECT * FROM materia WHERE estado = 1";
+        String sql = "SELECT * FROM materia";
         ArrayList<Materia> materias = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class MateriaData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnoMateria(rs.getInt("Año"));
-                materia.setEstado(true);
+                materia.setActivo(rs.getBoolean("estado"));
 
                 materias.add(materia);
             }

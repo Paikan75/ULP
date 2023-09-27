@@ -202,7 +202,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jRBMateriasIns.setSelected(false);
         
         //Habilita el boton inscribir y deshabilita el boton anular inscripcion
+        
         jBInscribir.setEnabled(true);
+        
+        
         jBAnular.setEnabled(false);
         
         borrarTabla();
@@ -220,6 +223,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
        
+        if(jTMaterias.getSelectedRow()!=-1){
         Inscripcion inscN= new Inscripcion();
         Alumno aluSelect = ((Alumno)jCBSeleccioneAlumno.getSelectedItem()); // alumno del combobox se cro una variable de almacenamiento
         inscN.setAlumno(aluSelect);
@@ -233,11 +237,13 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         insc.guardarInscripcion(inscN);
         borrarTabla();
         cargarDatos(aluSelect);
+        }
         
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jBAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularActionPerformed
 
+         if(jTMaterias.getSelectedRow()!=-1){
         int filaSeleccionada=jTMaterias.getSelectedRow();
         int idMateria = (int)(jTMaterias.getValueAt(filaSeleccionada, 0));
         
@@ -248,7 +254,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         borrarTabla ();
         cargarDatos(alum);
 
-
+         }
     }//GEN-LAST:event_jBAnularActionPerformed
 
 
@@ -282,7 +288,10 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         AlumnoData alum = new AlumnoData();
 
         for (Alumno alu : alum.listarAlumno()) {
+            
+            if(alu.isActivo()==true){
             jCBSeleccioneAlumno.addItem(alu);
+        }
         }
 
     }

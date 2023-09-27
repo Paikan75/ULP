@@ -101,7 +101,7 @@ public class AlumnoData {
      
      public Alumno buscarAlumno(int id)
      {
-         String sql= "SELECT * FROM alumno WHERE idAlumno = ? and estado = 1";
+         String sql= "SELECT * FROM alumno WHERE idAlumno = ?";
          Alumno alumno=null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -116,7 +116,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setActivo(rs.getBoolean("estado"));
             }else{
                 JOptionPane.showMessageDialog(null, "El alumno no existe o esta exterminado");
             }
@@ -133,7 +133,7 @@ public class AlumnoData {
      
      public Alumno buscarAlumnoPorDni(int dni)
      {
-         String sql= "SELECT * FROM alumno WHERE dni = ? and estado = 1";
+         String sql= "SELECT * FROM alumno WHERE dni = ?";
          Alumno alumno=null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -148,7 +148,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setActivo(rs.getBoolean("estado"));
             }else{
                 JOptionPane.showMessageDialog(null, "El alumno no existe o esta exterminado");
             }
@@ -165,7 +165,7 @@ public class AlumnoData {
      
      public List<Alumno> listarAlumno()
      {
-         String sql= "SELECT * FROM alumno WHERE estado = 1";
+         String sql= "SELECT * FROM alumno";
          ArrayList<Alumno> alumnos= new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -180,7 +180,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(true);
+                alumno.setActivo(rs.getBoolean("estado"));
                 
                 alumnos.add(alumno);
             }

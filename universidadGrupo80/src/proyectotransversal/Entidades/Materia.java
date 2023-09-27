@@ -7,7 +7,7 @@ public class Materia {
     private int idMateria;
     private String nombre;
     private int anoMateria;
-    private boolean estado;
+    private boolean activo;
 
     public Materia() {
     }
@@ -16,13 +16,13 @@ public class Materia {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.anoMateria = anoMateria;
-        this.estado = estado;
+        this.activo = estado;
     }
 
     public Materia(String nombre, int anoMateria, boolean estado) {
         this.nombre = nombre;
         this.anoMateria = anoMateria;
-        this.estado = estado;
+        this.activo = estado;
     }
 
     public int getIdMateria() {
@@ -49,12 +49,12 @@ public class Materia {
         this.anoMateria = anoMateria;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public boolean isActivo() {
+        return activo;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
