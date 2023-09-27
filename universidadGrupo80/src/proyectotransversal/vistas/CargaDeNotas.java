@@ -2,6 +2,7 @@
 package proyectotransversal.vistas;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.Entidades.Inscripcion;
@@ -105,8 +106,8 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jCBAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,7 +130,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                     .addComponent(jCBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
                     .addComponent(jBSalir))
@@ -144,27 +145,35 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jCBAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnosActionPerformed
+
         borrarTabla();
         Alumno aluSelec = (Alumno) jCBAlumnos.getSelectedItem();
-        cargarDatos(aluSelec.getIdAlumno());    
+        cargarDatos(aluSelec.getIdAlumno());
+       
     }//GEN-LAST:event_jCBAlumnosActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
        
+        try {
+            InscripcionData InscD = new InscripcionData();
+            Alumno alum = (Alumno) jCBAlumnos.getSelectedItem();
+
+            int filaSeleccionada = jTNotas.getSelectedRow();
+            int idMat = (Integer) (jTNotas.getValueAt(filaSeleccionada, 0));
+
+            double nota = Double.parseDouble((String) jTNotas.getValueAt(filaSeleccionada, 2));
+            System.out.println(nota);
+            InscD.actualizarNota(alum.getIdAlumno(), idMat, nota);
+
+            borrarTabla();
+            cargarDatos(alum.getIdAlumno());   
         
-        InscripcionData InscD= new InscripcionData();
-        Alumno alum =(Alumno)jCBAlumnos.getSelectedItem();
-        
-        int filaSeleccionada=jTNotas.getSelectedRow();
-        int idMat = (Integer)(jTNotas.getValueAt(filaSeleccionada, 0));
-                
-     
-        double nota = Double.parseDouble((String) jTNotas.getValueAt(filaSeleccionada, 2));
-         System.out.println(nota);     
-        InscD.actualizarNota(alum.getIdAlumno(),idMat , nota);
-        
-        borrarTabla();
-        cargarDatos(alum.getIdAlumno());        
+        }catch (NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros.");
+            
+        }catch (ClassCastException x) {
+            JOptionPane.showMessageDialog(null, "Recuerde presioanr enter luego de ingresar la nota.");
+        }
         
         
         

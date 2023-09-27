@@ -211,6 +211,7 @@ this.dispose();
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+
         jTFCodigo.setText("");
         jTFNombre.setText("");
         jTFAño.setText("");
