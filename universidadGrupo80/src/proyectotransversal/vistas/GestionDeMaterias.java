@@ -193,38 +193,35 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFNombreActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-    
-        MateriaData MatD= new MateriaData();
-        Materia mat=new Materia();
-        
-        
-        
-        if (materiaUnica(jTFNombre.getText()) == true) {
 
-            mat.setNombre(jTFNombre.getText());
-            mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
-            mat.setActivo(true);
-            MatD.guardarMateria(mat);
-            jTFCodigo.setText(mat.getIdMateria() + "");
-            jRBEstado.setEnabled(true);
-            jRBEstado.setSelected(true);
-            jBEliminar.setEnabled(true);
-            jBNuevo.setEnabled(true);
+//        MateriaData MatD = new MateriaData();
+//        Materia mat = new Materia();
+//
+//        
+//        if(materiaUnica(jTFNombre.getText())==true){
+//        
+//        mat.setNombre(jTFNombre.getText());
+//        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
+//        mat.setActivo(true);
+//        MatD.guardarMateria(mat);
+//        jTFCodigo.setText(mat.getIdMateria() + "");
+//        jRBEstado.setEnabled(true);
+//        jRBEstado.setSelected(true);
+//        jBEliminar.setEnabled(true);
+//        jBNuevo.setEnabled(true);
+//        
+//    }else{
+//        mat.setNombre(jTFNombre.getText());
+//        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
+//        mat.setActivo(jRBEstado.isSelected());
+//        mat.setIdMateria(Integer.parseInt(jTFCodigo.getText()));
+//        
+//        MatD.modificarMateria(mat);
 
-        } else {
-
-            mat.setNombre(jTFNombre.getText());
-            mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
-            mat.setActivo(jRBEstado.isSelected());
-
-            MatD.modificarMateria(mat);
-        }
-
-        
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
@@ -236,14 +233,14 @@ this.dispose();
         jRBEstado.setEnabled(false);
         jBEliminar.setEnabled(false);
         jBNuevo.setEnabled(false);
-        
+
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       
-          MateriaData MatD= new MateriaData();
-          try{
-          MatD.eliminarMateria(Integer.parseInt(jTFCodigo.getText()));
+
+        MateriaData MatD = new MateriaData();
+        try {
+            MatD.eliminarMateria(Integer.parseInt(jTFCodigo.getText()));
             jTFCodigo.setText("");
             jTFNombre.setText("");
             jTFAño.setText("");
@@ -251,35 +248,34 @@ this.dispose();
             jRBEstado.setEnabled(false);
             jBEliminar.setEnabled(false);
             jBNuevo.setEnabled(false);
-          }catch(NullPointerException ex){
-              JOptionPane.showMessageDialog(null, "Debe buscar la materia a eliminar");
-          }
-            
-        
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe buscar la materia a eliminar");
+        }
+
+
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-         
-        try{
-        MateriaData MatD= new MateriaData();
-         
-         
-         Materia mat=MatD.buscarMateria(Integer.parseInt(jTFCodigo.getText()));
-         
-         jTFNombre.setText(mat.getNombre());
-         jTFAño.setText(mat.getAnoMateria()+"");
-         jRBEstado.setEnabled(true);
-         jRBEstado.setSelected(mat.isActivo());
-         jBEliminar.setEnabled(true);
-        
-        }catch(NumberFormatException ex){
+
+        try {
+            MateriaData MatD = new MateriaData();
+
+            Materia mat = MatD.buscarMateria(Integer.parseInt(jTFCodigo.getText()));
+
+            jTFNombre.setText(mat.getNombre());
+            jTFAño.setText(mat.getAnoMateria() + "");
+            jRBEstado.setEnabled(true);
+            jRBEstado.setSelected(mat.isActivo());
+            jBEliminar.setEnabled(true);
+
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Codigo incorrecto o campo vacio");
             jTFCodigo.setText("");
-            
-        }catch(NullPointerException ex){
-            
+
+        } catch (NullPointerException ex) {
+
             jTFCodigo.setText("");
-             
+
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -301,26 +297,23 @@ this.dispose();
     private javax.swing.JTextField jTFNombre;
     // End of variables declaration//GEN-END:variables
 
-
-
     private boolean materiaUnica(String nombre) {
         boolean r = true;
-        
-        MateriaData matD = new MateriaData();
-        
-        List<Materia> lista= matD.listarMateria();
 
-        for (Materia mat: lista){
-            
-            if(mat.getNombre().equalsIgnoreCase(nombre)){
-                
+        MateriaData matD = new MateriaData();
+
+        List<Materia> lista = matD.listarMateria();
+
+        for (Materia mat : lista) {
+
+            if (mat.getNombre().equalsIgnoreCase(nombre)) {
+
                 r = false;
-                
+
             }
-                
+
         }
         return r;
     }
 
 }
-

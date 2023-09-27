@@ -45,8 +45,7 @@ public class MateriaData {
     }
 
     public void modificarMateria(Materia materia) {
-        String sql = "UPDATE materia SET nombre=?, año=?"
-                + "WHERE idMateria=?";
+        String sql = "UPDATE materia SET nombre=?,año=?,estado=? where idMateria=?";
 
         try {
 
@@ -54,7 +53,8 @@ public class MateriaData {
 
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnoMateria());
-            ps.setInt(3, materia.getIdMateria());
+            ps.setBoolean(3, materia.isActivo());
+            ps.setInt(4, materia.getIdMateria());
 
             int exito = ps.executeUpdate();
 

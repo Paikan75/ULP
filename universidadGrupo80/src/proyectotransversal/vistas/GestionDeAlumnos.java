@@ -5,6 +5,14 @@
  */
 package proyectotransversal.vistas;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
+import proyectotransversal.Entidades.Alumno;
+import proyectotransversal.Entidades.Materia;
+import proyectotransversal.accesoADatos.AlumnoData;
+import proyectotransversal.accesoADatos.MateriaData;
+
 /**
  *
  * @author Jesica
@@ -44,7 +52,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDate = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -79,8 +87,15 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
         jRBActivo.setText("     Activo");
         jRBActivo.setToolTipText("");
+        jRBActivo.setEnabled(false);
+        jRBActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBActivoActionPerformed(evt);
+            }
+        });
 
         jbNuevo.setText("Nuevo");
+        jbNuevo.setEnabled(false);
         jbNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbNuevoActionPerformed(evt);
@@ -88,6 +103,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.setEnabled(false);
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
@@ -97,8 +113,18 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jBGuardar.setText("Guardar");
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,23 +141,25 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLNombre)
-                        .addGap(152, 152, 152)
-                        .addComponent(jTNom))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLDocumento)
                             .addComponent(jLApellido)
                             .addComponent(jLEstado)
                             .addComponent(jLFechaNacimiento))
-                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDoc)
-                            .addComponent(jTApe, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRBActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 59, Short.MAX_VALUE)))))
+                                .addGap(78, 78, 78)
+                                .addComponent(jRBActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 44, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jDoc)
+                                    .addComponent(jTApe, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTNom)
+                                    .addComponent(jDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(83, 83, 83)
                 .addComponent(jBBuscar)
                 .addGap(30, 30, 30))
@@ -171,8 +199,8 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLFechaNacimiento)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jBEliminar)
@@ -187,7 +215,15 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
+        jDoc.setText("");
+        jTApe.setText("");
+        jTNom.setText("");
+        jDate.setDateFormatString("");
+        jRBActivo.setSelected(false);
+        jRBActivo.setEnabled(false);
+        jBEliminar.setEnabled(false);
+        jbNuevo.setEnabled(false);
+
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDocActionPerformed
@@ -199,8 +235,76 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTApeActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        // TODO add your handling code here:
+        
+        AlumnoData AluD = new AlumnoData();
+        int id=AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())).getIdAlumno();
+        
+        try {
+            AluD.eliminarAlumno(id);
+            jDoc.setText("");
+            jTApe.setText("");
+            jTNom.setText("");
+            jDate.setDate(Date.valueOf(LocalDate.now()));           
+            jRBActivo.setSelected(false);
+            jRBActivo.setEnabled(false);
+            jBEliminar.setEnabled(false);
+            jbNuevo.setEnabled(false);
+            
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe buscar la materia a eliminar");
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+this.dispose();      
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jRBActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBActivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBActivoActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        
+         try {
+             AlumnoData AluD = new AlumnoData();
+
+             
+            Alumno Alu = AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())) ;
+
+            
+            jTApe.setText(Alu.getApellido());
+            jTNom.setText(Alu.getNombre());
+            jDate.setDate(Date.valueOf(Alu.getFechaNac()));           
+            jRBActivo.setSelected(Alu.isActivo());
+            jRBActivo.setEnabled(true);
+            jBEliminar.setEnabled(true);
+            jbNuevo.setEnabled(true);
+            
+            
+         
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Codigo incorrecto o campo vacio");
+            jDoc.setText("");
+
+        } catch (NullPointerException ex) {
+
+            jDoc.setText("");
+
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jBBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -208,9 +312,9 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBSalir;
+    private com.toedter.calendar.JDateChooser jDate;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JTextField jDoc;
     private javax.swing.JLabel jLApellido;
     private javax.swing.JLabel jLDocumento;
