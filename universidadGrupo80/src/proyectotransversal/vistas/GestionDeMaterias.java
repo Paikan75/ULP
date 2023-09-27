@@ -202,7 +202,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         Materia mat = new Materia();
 
         
-        
+        if(jTFCodigo.getText().equalsIgnoreCase("")){
         
         mat.setNombre(jTFNombre.getText());
         mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
@@ -214,6 +214,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         jBEliminar.setEnabled(true);
         jBNuevo.setEnabled(true);
         
+        }else{
    
         mat.setNombre(jTFNombre.getText());
         mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
@@ -222,6 +223,9 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         
         MatD.modificarMateria(mat);
 
+        }
+        
+        jBNuevo.setEnabled(true);
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
