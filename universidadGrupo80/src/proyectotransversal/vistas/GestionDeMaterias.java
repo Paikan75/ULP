@@ -198,29 +198,29 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
 
-//        MateriaData MatD = new MateriaData();
-//        Materia mat = new Materia();
-//
-//        
-//        if(materiaUnica(jTFNombre.getText())==true){
-//        
-//        mat.setNombre(jTFNombre.getText());
-//        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
-//        mat.setActivo(true);
-//        MatD.guardarMateria(mat);
-//        jTFCodigo.setText(mat.getIdMateria() + "");
-//        jRBEstado.setEnabled(true);
-//        jRBEstado.setSelected(true);
-//        jBEliminar.setEnabled(true);
-//        jBNuevo.setEnabled(true);
-//        
-//    }else{
-//        mat.setNombre(jTFNombre.getText());
-//        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
-//        mat.setActivo(jRBEstado.isSelected());
-//        mat.setIdMateria(Integer.parseInt(jTFCodigo.getText()));
-//        
-//        MatD.modificarMateria(mat);
+        MateriaData MatD = new MateriaData();
+        Materia mat = new Materia();
+
+        
+        
+        
+        mat.setNombre(jTFNombre.getText());
+        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
+        mat.setActivo(true);
+        MatD.guardarMateria(mat);
+        jTFCodigo.setText(mat.getIdMateria() + "");
+        jRBEstado.setEnabled(true);
+        jRBEstado.setSelected(true);
+        jBEliminar.setEnabled(true);
+        jBNuevo.setEnabled(true);
+        
+   
+        mat.setNombre(jTFNombre.getText());
+        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
+        mat.setActivo(jRBEstado.isSelected());
+        mat.setIdMateria(Integer.parseInt(jTFCodigo.getText()));
+        
+        MatD.modificarMateria(mat);
 
     }//GEN-LAST:event_jBGuardarActionPerformed
 

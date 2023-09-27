@@ -218,7 +218,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jDoc.setText("");
         jTApe.setText("");
         jTNom.setText("");
-        jDate.setDateFormatString("");
+        jDate.setDate(Date.valueOf(LocalDate.now()));
         jRBActivo.setSelected(false);
         jRBActivo.setEnabled(false);
         jBEliminar.setEnabled(false);
