@@ -5,6 +5,7 @@
  */
 package proyectotransversal.vistas;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import proyectotransversal.Entidades.Materia;
 import proyectotransversal.accesoADatos.InscripcionData;
@@ -201,33 +202,28 @@ this.dispose();
         Materia mat=new Materia();
         
         
-        if(          ){
-       
         
-        mat.setNombre(jTFNombre.getText());
-        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
-        mat.setActivo(true);
-        MatD.guardarMateria(mat);
-        jTFCodigo.setText(mat.getIdMateria()+"");
-        jRBEstado.setEnabled(true);
-        jRBEstado.setSelected(true);
-        jBEliminar.setEnabled(true);
-        jBNuevo.setEnabled(true);
-        
-        }else{
-            
-               
-        mat.setNombre(jTFNombre.getText());
-        mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
-        mat.setActivo(jRBEstado.isSelected());
-        
-        MatD.modificarMateria(mat);
-    }
-        
-        
-        
-        
-        
+        if (materiaUnica(jTFNombre.getText()) == true) {
+
+            mat.setNombre(jTFNombre.getText());
+            mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
+            mat.setActivo(true);
+            MatD.guardarMateria(mat);
+            jTFCodigo.setText(mat.getIdMateria() + "");
+            jRBEstado.setEnabled(true);
+            jRBEstado.setSelected(true);
+            jBEliminar.setEnabled(true);
+            jBNuevo.setEnabled(true);
+
+        } else {
+
+            mat.setNombre(jTFNombre.getText());
+            mat.setAnoMateria((Integer.parseInt(jTFAño.getText())));
+            mat.setActivo(jRBEstado.isSelected());
+
+            MatD.modificarMateria(mat);
+        }
+
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -307,17 +303,24 @@ this.dispose();
 
 
 
-private void materiaUnica (String nombre){
+    private boolean materiaUnica(String nombre) {
+        boolean r = true;
+        
+        MateriaData matD = new MateriaData();
+        
+        List<Materia> lista= matD.listarMateria();
 
-MateriaData matD= new MateriaData();
+        for (Materia mat: lista){
+            
+            if(mat.getNombre().equalsIgnoreCase(nombre)){
+                
+                r = false;
+                
+            }
+                
+        }
+        return r;
+    }
 
-for(Materia mat=matD.listarMateria()){
-    
-    
-    
-    
 }
 
-    
-}
-}
