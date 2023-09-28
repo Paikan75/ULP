@@ -221,7 +221,10 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jTApe.setText("");
         jTNom.setText("");
         
+        //al borrar mostraba en el jDate la fecha actual.
 //        jDate.setDate(Date.valueOf(LocalDate.now()));
+
+        //Al borrar muestra la fecha de nuevo sin valores como al principio.
         jDate.setDate(null);
         
         jRBActivo.setSelected(false);
