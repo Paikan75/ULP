@@ -6,7 +6,11 @@
 package proyectotransversal.vistas;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import javax.swing.JOptionPane;
 import proyectotransversal.Entidades.Alumno;
 import proyectotransversal.Entidades.Materia;
@@ -328,36 +332,37 @@ this.dispose();
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
 
- AlumnoData AluD = new AlumnoData();
+        AlumnoData AluD = new AlumnoData();
         Alumno alu = new Alumno();
 
-        
-        //chicos aca esta lo de gaurdar un alumno nuevo y lo de modificar el alumno, lo que no logre es poner la condicion para que entre a uno u a otro.
-        
-//        if(ALGO){
-        
         alu.setDni(Integer.parseInt(jDoc.getText()));
         alu.setApellido(jTApe.getText());
         alu.setNombre(jTNom.getText());
         alu.setActivo(true);
-        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
+        alu.setFechaNac(LocalDate.of(jDate.getDate().getYear(), jDate.getDate().getMonth(), jDate.getDate().getDay()));
+
+        //guardar alumno nuevo.
         AluD.guardarAlumno(alu);
-      
+
         jRBActivo.setEnabled(true);
         jRBActivo.setSelected(true);
+        
         jBEliminar.setEnabled(true);
+        
         jbNuevo.setEnabled(true);
-        
-       
+
 //        }else{   
-        alu.setDni(Integer.parseInt(jDoc.getText()));
-        alu.setApellido(jTApe.getText());
-        alu.setNombre(jTNom.getText());
-        alu.setActivo(jRBActivo.isSelected());
-        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
-        AluD.guardarAlumno(alu);
-        
-        AluD.modificarAlumno(alu);
+//        alu.setDni(Integer.parseInt(jDoc.getText()));
+//        alu.setApellido(jTApe.getText());
+//        alu.setNombre(jTNom.getText());
+//        alu.setActivo(jRBActivo.isSelected());
+//        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
+//        
+//        AluD.guardarAlumno(alu);
+//        
+          //modificar alumno existente.
+//        AluD.modificarAlumno(alu);
+       
 
 //                }
         
