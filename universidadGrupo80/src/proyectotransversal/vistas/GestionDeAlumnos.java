@@ -221,9 +221,12 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jTApe.setText("");
         jTNom.setText("");
         jDate.setDate(Date.valueOf(LocalDate.now()));
+        
         jRBActivo.setSelected(false);
         jRBActivo.setEnabled(false);
+        
         jBEliminar.setEnabled(false);
+        
         jbNuevo.setEnabled(false);
 
     }//GEN-LAST:event_jbNuevoActionPerformed
@@ -300,12 +303,6 @@ this.dispose();
         
         
         
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
@@ -316,7 +313,7 @@ this.dispose();
         
         //chicos aca esta lo de gaurdar un alumno nuevo y lo de modificar el alumno, lo que no logre es poner la condicion para que entre a uno u a otro.
         
-        if(ALGO){
+//        if(ALGO){
         
         alu.setDni(Integer.parseInt(jDoc.getText()));
         alu.setApellido(jTApe.getText());
@@ -331,7 +328,7 @@ this.dispose();
         jbNuevo.setEnabled(true);
         
        
-        }else{   
+//        }else{   
         alu.setDni(Integer.parseInt(jDoc.getText()));
         alu.setApellido(jTApe.getText());
         alu.setNombre(jTNom.getText());
@@ -341,7 +338,7 @@ this.dispose();
         
         AluD.modificarAlumno(alu);
 
-                }
+//                }
         
         jbNuevo.setEnabled(true);
                                            
