@@ -52,7 +52,7 @@ public class AlumnoData {
         }
     
      public void modificarAlumno(Alumno alumno){
-        String sql = "UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNacimiento=?"
+        String sql = "UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNacimiento=?,estado=?"
                 + "WHERE idAlumno=?";
         
         try {
@@ -63,7 +63,8 @@ public class AlumnoData {
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
-            ps.setInt(5, alumno.getIdAlumno());
+            ps.setBoolean(5, alumno.isActivo());
+            ps.setInt(6, alumno.getIdAlumno());
             
             int exito = ps.executeUpdate();
             
@@ -90,7 +91,7 @@ public class AlumnoData {
             int exito = ps.executeUpdate();
             
             if(exito == 1){
-                JOptionPane.showMessageDialog(null, "Alumno exterminado con exito.");
+                JOptionPane.showMessageDialog(null, "Alumno eliminado con exito.");
             }
             
         } catch (SQLException ex) {
@@ -118,7 +119,7 @@ public class AlumnoData {
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(rs.getBoolean("estado"));
             }else{
-                JOptionPane.showMessageDialog(null, "El alumno no existe o esta exterminado");
+                JOptionPane.showMessageDialog(null, "El alumno no existe o fue eliminado");
             }
             
              ps.close();
@@ -150,7 +151,7 @@ public class AlumnoData {
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(rs.getBoolean("estado"));
             }else{
-                JOptionPane.showMessageDialog(null, "El alumno no existe o esta exterminado");
+                JOptionPane.showMessageDialog(null, "El alumno no existe o fue eliminado");
             }
             
              ps.close();

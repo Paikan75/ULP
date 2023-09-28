@@ -79,11 +79,11 @@ public class MateriaData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Materia exterminada con exito.");
+                JOptionPane.showMessageDialog(null, "Materia eliminada con exito.");
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al exterminar Materia.");
+            JOptionPane.showMessageDialog(null, "Error al eliminar Materia.");
         }
 
     }
@@ -104,7 +104,7 @@ public class MateriaData {
                 materia.setAnoMateria(rs.getInt("Año"));
                 materia.setActivo(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "La Materia no existe o esta exterminada");
+                JOptionPane.showMessageDialog(null, "La Materia no existe o fue eliminada");
             }
 
             ps.close();

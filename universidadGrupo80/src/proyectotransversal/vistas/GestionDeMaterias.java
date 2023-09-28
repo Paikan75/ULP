@@ -271,6 +271,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
             jRBEstado.setEnabled(true);
             jRBEstado.setSelected(mat.isActivo());
             jBEliminar.setEnabled(true);
+            jBNuevo.setEnabled(true);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Codigo incorrecto o campo vacio");
@@ -301,23 +302,23 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFNombre;
     // End of variables declaration//GEN-END:variables
 
-    private boolean materiaUnica(String nombre) {
-        boolean r = true;
-
-        MateriaData matD = new MateriaData();
-
-        List<Materia> lista = matD.listarMateria();
-
-        for (Materia mat : lista) {
-
-            if (mat.getNombre().equalsIgnoreCase(nombre)) {
-
-                r = false;
-
-            }
-
-        }
-        return r;
-    }
+//    private boolean materiaUnica(String nombre) {
+//        boolean r = true;
+//
+//        MateriaData matD = new MateriaData();
+//
+//        List<Materia> lista = matD.listarMateria();
+//
+//        for (Materia mat : lista) {
+//
+//            if (mat.getNombre().equalsIgnoreCase(nombre)) {
+//
+//                r = false;
+//
+//            }
+//
+//        }
+//        return r;
+//    }
 
 }

@@ -54,9 +54,6 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jBBuscar = new javax.swing.JButton();
         jDate = new com.toedter.calendar.JDateChooser();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
         setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         setName("Alumnos"); // NOI18N
 
@@ -111,6 +108,11 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +307,52 @@ this.dispose();
         
         
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+
+ AlumnoData AluD = new AlumnoData();
+        Alumno alu = new Alumno();
+
+        
+        //chicos aca esta lo de gaurdar un alumno nuevo y lo de modificar el alumno, lo que no logre es poner la condicion para que entre a uno u a otro.
+        
+        if(ALGO){
+        
+        alu.setDni(Integer.parseInt(jDoc.getText()));
+        alu.setApellido(jTApe.getText());
+        alu.setNombre(jTNom.getText());
+        alu.setActivo(true);
+        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
+        AluD.guardarAlumno(alu);
+      
+        jRBActivo.setEnabled(true);
+        jRBActivo.setSelected(true);
+        jBEliminar.setEnabled(true);
+        jbNuevo.setEnabled(true);
+        
+       
+        }else{   
+        alu.setDni(Integer.parseInt(jDoc.getText()));
+        alu.setApellido(jTApe.getText());
+        alu.setNombre(jTNom.getText());
+        alu.setActivo(jRBActivo.isSelected());
+        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
+        AluD.guardarAlumno(alu);
+        
+        AluD.modificarAlumno(alu);
+
+                }
+        
+        jBNuevo.setEnabled(true);
+                                           
+
+
+
+
+
+
+        
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
