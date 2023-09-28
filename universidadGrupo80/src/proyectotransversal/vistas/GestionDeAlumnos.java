@@ -341,34 +341,21 @@ this.dispose();
         alu.setActivo(true);
         alu.setFechaNac(LocalDate.of(jDate.getDate().getYear(), jDate.getDate().getMonth(), jDate.getDate().getDay()));
         
+        //con este metodo conseguimos el ID del alumno para el metodo modificarAlumno.
         alu = AluD.buscarAlumnoPorDni(alu.getDni());
         
         jRBActivo.setEnabled(true);
         jRBActivo.setSelected(true);
         
         jBEliminar.setEnabled(true);
-        
+  
         //guardar alumno nuevo.
 //        AluD.guardarAlumno(alu);
 
         //modificar alumno existente.
         AluD.modificarAlumno(alu);
-        
-        jbNuevo.setEnabled(true);
 
-//        }else{   
-//        alu.setDni(Integer.parseInt(jDoc.getText()));
-//        alu.setApellido(jTApe.getText());
-//        alu.setNombre(jTNom.getText());
-//        alu.setActivo(jRBActivo.isSelected());
-//        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
-//        
-//        
-  
-       
-
-//                }
-        
+        jbNuevo.setEnabled(true);   
     }//GEN-LAST:event_jBGuardarActionPerformed
 
 
