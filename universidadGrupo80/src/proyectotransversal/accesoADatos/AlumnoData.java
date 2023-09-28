@@ -49,7 +49,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno.");
         }
        
-        }
+    }
     
      public void modificarAlumno(Alumno alumno){
         String sql = "UPDATE alumno SET dni=?,apellido=?,nombre=?,fechaNacimiento=?,estado=? WHERE idAlumno=?";
@@ -111,12 +111,14 @@ public class AlumnoData {
             if (rs.next()){
                 
                 alumno=new Alumno();
+                
                 alumno.setIdAlumno(id);
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(rs.getBoolean("estado"));
+                
             }else{
                 JOptionPane.showMessageDialog(null, "El alumno no existe o fue eliminado");
             }

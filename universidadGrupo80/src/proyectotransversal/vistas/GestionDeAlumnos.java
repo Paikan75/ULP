@@ -331,29 +331,34 @@ this.dispose();
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-
+          
         AlumnoData AluD = new AlumnoData();
         Alumno alu = new Alumno();
 
-        alu.setDni(Integer.parseInt(jDoc.getText()));
-        alu.setApellido(jTApe.getText());
-        alu.setNombre(jTNom.getText());
-        alu.setActivo(true);
-        alu.setFechaNac(LocalDate.of(jDate.getDate().getYear(), jDate.getDate().getMonth(), jDate.getDate().getDay()));
-        
-        //con este metodo conseguimos el ID del alumno para el metodo modificarAlumno.
-        alu = AluD.buscarAlumnoPorDni(alu.getDni());
+       try{
+           alu.setDni(Integer.parseInt(jDoc.getText()));
+           alu.setApellido(jTApe.getText());
+           alu.setNombre(jTNom.getText());
+           alu.setActivo(true);
+           alu.setFechaNac(LocalDate.of(jDate.getDate().getYear(), jDate.getDate().getMonth(), jDate.getDate().getDay()));
+           
+//           Con este metodo conseguimos el ID del alumno para el metodo modificarAlumno.
+           alu = AluD.buscarAlumnoPorDni(alu.getDni());
+           
+//           modificar alumno existente.
+            AluD.modificarAlumno(alu);
+            
+        }catch (NullPointerException d) {
+           JOptionPane.showMessageDialog(null, "Agregando alumno.");
+           
+//           guardar alumno nuevo.
+           AluD.guardarAlumno(alu);
+        }
         
         jRBActivo.setEnabled(true);
         jRBActivo.setSelected(true);
         
         jBEliminar.setEnabled(true);
-  
-        //guardar alumno nuevo.
-//        AluD.guardarAlumno(alu);
-
-        //modificar alumno existente.
-        AluD.modificarAlumno(alu);
 
         jbNuevo.setEnabled(true);   
     }//GEN-LAST:event_jBGuardarActionPerformed
