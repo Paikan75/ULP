@@ -255,6 +255,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
             jDoc.setText("");
             jTApe.setText("");
             jTNom.setText("");
+            //setea la fecha para que no muestre ningun dato.
             jDate.setDate(null);   
             
             jRBActivo.setSelected(false);
