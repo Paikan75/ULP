@@ -302,23 +302,5 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFNombre;
     // End of variables declaration//GEN-END:variables
 
-//    private boolean materiaUnica(String nombre) {
-//        boolean r = true;
-//
-//        MateriaData matD = new MateriaData();
-//
-//        List<Materia> lista = matD.listarMateria();
-//
-//        for (Materia mat : lista) {
-//
-//            if (mat.getNombre().equalsIgnoreCase(nombre)) {
-//
-//                r = false;
-//
-//            }
-//
-//        }
-//        return r;
-//    }
 
 }

@@ -343,7 +343,7 @@ this.dispose();
 
                 }
         
-        jBNuevo.setEnabled(true);
+        jbNuevo.setEnabled(true);
                                            
 
 
