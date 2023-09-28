@@ -247,17 +247,21 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         
         AlumnoData AluD = new AlumnoData();
-        int id=AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())).getIdAlumno();
+        int id = AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())).getIdAlumno();
         
         try {
             AluD.eliminarAlumno(id);
+            
             jDoc.setText("");
             jTApe.setText("");
             jTNom.setText("");
-            jDate.setDate(Date.valueOf(LocalDate.now()));           
+            jDate.setDate(null);   
+            
             jRBActivo.setSelected(false);
             jRBActivo.setEnabled(false);
+            
             jBEliminar.setEnabled(false);
+            
             jbNuevo.setEnabled(false);
             
         } catch (NullPointerException ex) {
@@ -346,13 +350,6 @@ this.dispose();
 //                }
         
         jbNuevo.setEnabled(true);
-                                           
-
-
-
-
-
-
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
