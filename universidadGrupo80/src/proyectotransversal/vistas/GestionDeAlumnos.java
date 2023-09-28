@@ -247,11 +247,25 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         
         AlumnoData AluD = new AlumnoData();
-        int id = AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())).getIdAlumno();
+//        int id = AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())).getIdAlumno();
+
+        //Instanciamos un alumno y obtenemos el mismo a traves del metodo.
+        Alumno alumno = AluD.buscarAlumnoPorDni((Integer.parseInt(jDoc.getText())));
+        
+        //obtenemos su estado e id.
+        boolean estado = alumno.isActivo();
+        int id = alumno.getIdAlumno();
         
         try {
-            AluD.eliminarAlumno(id);
-            
+            //corroboramos si el alumno ya esta dado de baja o no.
+            if(estado == false){
+                //Si el alumno ya fue dado de baja lo aclara por pantalla.
+                JOptionPane.showMessageDialog(null, "El alumno ya fue dado de baja. (Estado = 0)");
+            }else{
+                //Si el alumno esta activo lo da de baja.
+                AluD.eliminarAlumno(id);
+            }
+
             jDoc.setText("");
             jTApe.setText("");
             jTNom.setText("");
