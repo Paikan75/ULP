@@ -91,7 +91,7 @@ public class AlumnoData {
             int exito = ps.executeUpdate();
             
             if(exito == 1){
-                JOptionPane.showMessageDialog(null, "Alumno eliminado con exito.");
+                JOptionPane.showMessageDialog(null, "Alumno eliminado con exito. Ahora su estado es 0.");
             }
             
         } catch (SQLException ex) {
