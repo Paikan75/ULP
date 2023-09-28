@@ -340,16 +340,17 @@ this.dispose();
         alu.setNombre(jTNom.getText());
         alu.setActivo(true);
         alu.setFechaNac(LocalDate.of(jDate.getDate().getYear(), jDate.getDate().getMonth(), jDate.getDate().getDay()));
-
-        //guardar alumno nuevo.
-//        AluD.guardarAlumno(alu);
-
+        
+        alu = AluD.buscarAlumnoPorDni(alu.getDni());
+        
         jRBActivo.setEnabled(true);
         jRBActivo.setSelected(true);
         
         jBEliminar.setEnabled(true);
-        alu = AluD.buscarAlumnoPorDni(alu.getDni());
         
+        //guardar alumno nuevo.
+//        AluD.guardarAlumno(alu);
+
         //modificar alumno existente.
         AluD.modificarAlumno(alu);
         
@@ -362,7 +363,6 @@ this.dispose();
 //        alu.setActivo(jRBActivo.isSelected());
 //        alu.setFechaNac(LocalDate.parse(jDate.getDate().toString()));
 //        
-//        AluD.guardarAlumno(alu);
 //        
   
        
