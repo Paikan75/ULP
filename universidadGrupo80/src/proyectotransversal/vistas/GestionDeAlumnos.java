@@ -299,22 +299,21 @@ this.dispose();
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         
          try {
-             AlumnoData AluD = new AlumnoData();
+            AlumnoData AluD = new AlumnoData();
 
-             
             Alumno Alu = AluD.buscarAlumnoPorDni(Integer.parseInt(jDoc.getText())) ;
 
-            
             jTApe.setText(Alu.getApellido());
             jTNom.setText(Alu.getNombre());
-            jDate.setDate(Date.valueOf(Alu.getFechaNac()));           
+            jDate.setDate(Date.valueOf(Alu.getFechaNac()));    
+            
             jRBActivo.setSelected(Alu.isActivo());
             jRBActivo.setEnabled(true);
+            
             jBEliminar.setEnabled(true);
+            
             jbNuevo.setEnabled(true);
-            
-            
-         
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Codigo incorrecto o campo vacio");
             jDoc.setText("");
