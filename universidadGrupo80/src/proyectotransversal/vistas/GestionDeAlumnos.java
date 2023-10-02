@@ -6,16 +6,10 @@
 package proyectotransversal.vistas;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import javax.swing.JOptionPane;
 import proyectotransversal.Entidades.Alumno;
-import proyectotransversal.Entidades.Materia;
 import proyectotransversal.accesoADatos.AlumnoData;
-import proyectotransversal.accesoADatos.MateriaData;
 
 /**
  *
